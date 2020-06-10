@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="list-group col-">
+        <a href="{% url 'home' %}" class="list-group-item list-group-item-action text-center bg-white">
+            All Genres
+        </a>
+        {% for genre in genres %}
+        <a href="{% url 'movies:genre' genre.id %} " class="list-group-item list-group-item-action">{{ genre }}</a>
+        {% endfor %}
+    </div>
+    <div class="col" style="padding-left: 0px;">
+        <table style="border-spacing: 10px;" class="table table-hover table-striped">
+            <thead class="thead-dark">
+
+                <tr>
+                    <th>Title</th>
+                    <th>Rating</th>
+                    <th>Year</th>
+                    <th>Genre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie in movies %}
+                {% if movie.title %}
+                <tr>
+                    <td><a href="{% url 'movies:detail' movie.id %}" style="text-decoration:none">{{ movie.title }}</a>
+                    </td>
+                    <td><strong>{{ movie.rating }}</strong>\10</td>
+                    <td>{{ movie.release_year }}</td>
+                    <td>{% for mg in movie.genre.all %}. {{ mg }} {% endfor %}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td class="text-muted">
+                        <p>
+                            there is no movies in this genre yet :(</p>
+                        <a href="#" class="text-reset"></a>All Genres</a>.
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

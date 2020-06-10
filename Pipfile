@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+pylint = "*"
+
+[packages]
+django = "*"
+pylint-django = "*"
+requests = "*"
+tmdbsimple = "*"
+gunicorn = "*"
+whitenoise = "*"
+
+[requires]
+python_version = "3.8"

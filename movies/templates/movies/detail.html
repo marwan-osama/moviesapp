@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container p-3 mb-2 bg-secondary text-white">
+    <div class="row">
+        <div class="col-3">
+            <img src="{{ movie_poster }}" alt="" width="200">
+            <br>
+            <br>
+            <dl>
+                <dt>● Title</dt>
+                <dd>{{ movie.title }}</dd>
+                <dt>● Release year</dt>
+                <dd>{{ movie.release_year }}</dd>
+                <dt>● Rating</dt>
+                <dd><strong>{{ movie.rating }}</strong>/10</dd>
+                <div class="row">
+                    <div class="col-md">
+                        <dt>● Genre</dt>
+                        <dd>{% for mg in movie.genre.all %}. {{ mg }} {% endfor %}</dd>
+                    </div>
+                    <div class="col-5">
+                        <dt>● Budget</dt>
+                        <dd>{{ movie_budget }}$</dd>
+                    </div>
+                </div>
+            </dl>
+        </div>
+        <div class="media col-9">
+            <iframe width="910" height="440" src="https://www.youtube.com/embed/{{ video_key }}" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div><br>
+    </div>
+</div>
+
+{% endblock %}
